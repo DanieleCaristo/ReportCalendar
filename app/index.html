@@ -1,20 +1,131 @@
 <!doctype html>
 <html>
 
+<style>
+    .login-mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 9999;
+        opacity: 0.6;
+    }
+    
+    .login-box {
+        z-index: 99999;
+        position: fixed;
+        width: 400px;
+        height: 360px;
+        background-color: white;
+        padding: 40px;
+        left: calc(50% - 200px);
+        top: calc(50% - 180px);
+    }
+    
+    .login-button {
+        margin-top: 30px;
+    }
+    
+    .login-title {
+        margin-bottom: 40px;
+    }
+    
+    .login-error-box {
+        display: none;
+        height: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    </style>
+
 <head>
-<script src="scripts/init.js"></script>
+<!--script src="scripts/init.js"></script-->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/underscore/underscore-min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/init.js"></script>
+<script src="scripts/http-manager.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="scripts/sections/main/controller.js"></script>
+<script src="scripts/sections/calendar/controller.js"></script>
+<script src="scripts/services/login-service.js"></script>
+<script src="scripts/bootstrap-year-calendar.min.js"></script>
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"></link>
+<link rel="stylesheet" href="styles/bootstrap-year-calendar.min.css"></link>
 
 </head>
+<div class="login-mask">
+    </div>
+ <div class="login-box">
+        <h2 class="form-signin-heading login-title">Please sign in</h2>
+        <div class="alert alert-danger login-error-box"> </div>
+        <input id="login-box-username" type="text" class="form-control" placeholder="username" required autofocus>
+        <input id="login-box-password" type="password" class="form-control" placeholder="password" required>
+        <button onclick="uiLogin()" class="btn btn-lg btn-primary btn-block login-button">Sign in</button>
+    </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
 
-<boby>CIAOOOOOOOOOOOOOOOO
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#calendar">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" ng-click="ciccio()" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-<div ng-app="">
-  <p>Name : <input type="text" ng-model="name"></p>
-  <h1>Hello {{name}}</h1>
-</div>
+<boby ng-app="Report-Calendar">
+
+
+<div ng-view></div>
+
+
 
 
 </boby>

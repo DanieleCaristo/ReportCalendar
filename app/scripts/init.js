@@ -13,12 +13,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   $( document ).ready(function(){
 
-    $( "#main-container" ).load( "elements/navigation-manager/dashboard-navigation-system.html" );
-
-    window.loadDashComponent = function(targetSelector, sourceUrl){
-      $( targetSelector).load( sourceUrl );
-    };
-
     window.baseUrl = "./app";
     window.clientUrl = "";
 
@@ -28,6 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     window.hideLogin = function(){
+      console.log("hideLogin");
       $(".login-mask").css("display","none");
       $(".login-box").css("display","none");
     }
