@@ -1,0 +1,29 @@
+{
+  "name": "ReportCalendar",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-bootstrap": "2.2.0",
+    "angular-cookies": "^1.5.0",
+    "angular-messages": "^1.5.0",
+    "angular-resource": "1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-sanitize": "^1.5.0",
+    "angular-touch": "^1.5.0",
+    "jquery": "2.2.3",
+    "underscore": "1.8.3",
+    "l2t-paper-slider": "1.2.0",
+    "d3": "~3.5.6",
+    "bootstrap": "^3.2.0",
+    "chartjs": "2.2.2",
+    "chartist": "^0.9.8",
+    "leaflet": "^0.7.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  },
+  "appPath": "app",
+  "ignore": []
+}
