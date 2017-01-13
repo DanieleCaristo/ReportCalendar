@@ -16,10 +16,14 @@
     "underscore": "1.8.3",
     "l2t-paper-slider": "1.2.0",
     "d3": "~3.5.6",
-    "bootstrap": "^3.2.0",
+    "bootstrap": "^3.3.7",
     "chartjs": "2.2.2",
     "chartist": "^0.9.8",
-    "leaflet": "^0.7.2"
+    "leaflet": "^0.7.2",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.44",
+    "bootstrap-datepicker": "1.4.0",
+    "components-font-awesome": "^4.7.0",
+    "bootstrap-formhelpers": "bootstrap-form-helpers#^2.3.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
