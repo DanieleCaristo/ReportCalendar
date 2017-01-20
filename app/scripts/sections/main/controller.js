@@ -7,7 +7,7 @@ angular.module('Report-Calendar')
       'AngularJS',
       'Karma'
     ];
-    $scope.prova = "CICCIOOOO"; 
+    $scope.prova = ""; 
 
     $scope.ciccio = function(){
       console.log("CICCCCCIIIOOOO");
@@ -19,10 +19,15 @@ angular.module('Report-Calendar')
     
   });
 
+
   window.uiLogin = function() {
             window.hideLogin();
-           /* var username = $("#login-box-username").val();
-            var password = $("#login-box-password").val();
+            window.username = $("#login-box-username").val();
+            window.password = $("#login-box-password").val();
+            $(".usr").css("display","block");
+
+
+           /* 
             if (username == "" || password == "") {
                 window.showErrorLogin('Invalid username or password.');
             } else {
