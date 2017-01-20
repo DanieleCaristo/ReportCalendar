@@ -1,12 +1,71 @@
+<div class="container">
 <div id="calendar">CALENDAR</div>
 
-
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="event-modal" role="dialog">
     <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    Attività
+                </h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="event-index" value="">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-4 control-label">Name</label>
+                        <div class="col-sm-7">
+                            <input name="event-name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-4 control-label">Activity</label>
+                        <div class="col-sm-7">
+                            <input name="event-activity" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-4 control-label">Location</label>
+                        <div class="col-sm-7">
+                            <input name="event-location" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-4 control-label">Dates</label>
+                        <div class="col-sm-7">
+                            <div class="input-group input-daterange" data-provide="datepicker">
+                                <input name="event-start-date" type="text" class="form-control" value="2012-04-05">
+                                <span class="input-group-addon">to</span>
+                                <input name="event-end-date" type="text" class="form-control" value="2012-04-19">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="min-date" class="col-sm-4 control-label">Hours</label>
+                        <div class="col-sm-7">
+                            <input name="event-hours" type="text" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save-event">
+                    Save
+                </button>
+            </div>
+        </div>
+
+
+        
     
-      <!-- Modal content-->
+      <!-- Modal content>
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -30,15 +89,14 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
-      </div>
+      </div-->
       
     </div>
   </div>
   
+
+
 </div>
-
-
-
 
 <script>
 
@@ -49,17 +107,29 @@ function prova(){
 	var dataSource = [
             {
                 id: 0,
+                activity: 'Ferie',
+                name: 'Google I/O',
+                location: 'San Francisco, CA',
+                startDate: new Date(2016, 4, 28),
+                endDate: new Date(2016, 4, 29),
+                hours: 8
+            },{
+                id: 1,
+                activity: 'Ferie',
                 name: 'Google I/O',
                 location: 'San Francisco, CA',
                 startDate: new Date(2017, 4, 28),
-                endDate: new Date(2017, 4, 29)
+                endDate: new Date(2017, 4, 29),
+                hours: 8
             },
             {
-                id: 1,
+                id: 2,
                 name: 'MTL',
+                activity: 'Ferie',
                 location: 'MIAMI ,FL',
                 startDate: new Date(2017, 6, 8),
-                endDate: new Date(2017, 6, 19)
+                endDate: new Date(2017, 6, 19),
+                hours: 8
             },
         ];
         $('#calendar').data('calendar').setDataSource(dataSource);
@@ -78,9 +148,11 @@ $( document ).ready(function() {
  	console.log("EDIT");
     $('#event-modal input[name="event-index"]').val(event ? event.id : '');
     $('#event-modal input[name="event-name"]').val(event ? event.name : '');
+    $('#event-modal input[name="event-activity"]').val(event ? event.activity : '');
     $('#event-modal input[name="event-location"]').val(event ? event.location : '');
     $('#event-modal input[name="event-start-date"]').datepicker('update', event ? event.startDate : '');
     $('#event-modal input[name="event-end-date"]').datepicker('update', event ? event.endDate : '');
+    $('#event-modal input[name="event-hours"]').val(event ? event.hours : '');
     $('#event-modal').modal();
 }
 
@@ -101,9 +173,11 @@ function saveEvent() {
     var event = {
         id: $('#event-modal input[name="event-index"]').val(),
         name: $('#event-modal input[name="event-name"]').val(),
+        activity: $('#event-modal input[name="event-activity"]').val(),
         location: $('#event-modal input[name="event-location"]').val(),
         startDate: $('#event-modal input[name="event-start-date"]').datepicker('getDate'),
-        endDate: $('#event-modal input[name="event-end-date"]').datepicker('getDate')
+        endDate: $('#event-modal input[name="event-end-date"]').datepicker('getDate'),
+        hours: $('#event-modal input[name="event-hours"]').val()
     }
     
     var dataSource = $('#calendar').data('calendar').getDataSource();
@@ -112,9 +186,11 @@ function saveEvent() {
         for(var i in dataSource) {
             if(dataSource[i].id == event.id) {
                 dataSource[i].name = event.name;
+                dataSource[i].activity = event.activity;
                 dataSource[i].location = event.location;
                 dataSource[i].startDate = event.startDate;
                 dataSource[i].endDate = event.endDate;
+                dataSource[i].hours = event.hours;
             }
         }
     }
@@ -166,6 +242,8 @@ setTimeout(function(){
                     content += '<div class="event-tooltip-content">'
                                     + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
                                     + '<div class="event-location">' + e.events[i].location + '</div>'
+                                    + '<div class="event-activity">' + e.events[i].activity + '</div>'
+                                    + '<div class="event-hours">' + e.events[i].hours + '</div>'
                                 + '</div>';
                 }
             
