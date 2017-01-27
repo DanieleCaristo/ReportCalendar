@@ -7,6 +7,7 @@ angular
   return {
     LogIn: function(){
       console.log("LOGIN DONE");
+      $scope.show=false;
       //window.hideLogin();
     }
   };

@@ -83,6 +83,11 @@ body
 	text-align:center;
 }
 
+#usrText
+{
+	display: none ; 
+}
+
 #main > .site-content > span.fa-spinner
 {
 	font-size:60px;

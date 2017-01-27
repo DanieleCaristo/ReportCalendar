@@ -7,7 +7,7 @@ angular.module('Report-Calendar')
       'AngularJS',
       'Karma'
     ];
-    $scope.prova = ""; 
+    $scope.show = true; 
 
     $scope.ciccio = function(){
       console.log("CICCCCCIIIOOOO");
@@ -24,8 +24,8 @@ angular.module('Report-Calendar')
             window.hideLogin();
             window.username = $("#login-box-username").val();
             window.password = $("#login-box-password").val();
-            $(".usr").css("display","block");
-
+            document.getElementById("usrText").style.display = "inline";
+            $("#usrText").html(window.username);
 
            /* 
             if (username == "" || password == "") {
